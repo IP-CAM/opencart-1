@@ -1,3 +1,9 @@
 config.php
 admin/config.php
+package.json
+Gruntfile.js
+node_modules/
+
+system/*
+image/*
 
