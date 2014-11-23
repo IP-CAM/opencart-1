@@ -83,7 +83,9 @@
     </div>
   </div>
 </header>
+
 <?php if ($categories) { ?>
+
 <div class="container">
   <nav id="menu" class="navbar">
     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
@@ -92,28 +94,58 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <?php foreach ($categories as $category) { ?>
-            <?php if ($category['children']) { ?>
-                <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-                  <div class="dropdown-menu">
-                    <div class="dropdown-inner">
-                      <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-                      <ul class="list-unstyled">
-                        <?php foreach ($children as $child) {
-                         var_dump($child);
-                         ?>
-                        <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                        <?php } ?>
-                      </ul>
-                      <?php } ?>
-                    </div>
-                    <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-                </li>
-            <?php } else { ?>
-                <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
+        <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
         <?php } ?>
       </ul>
     </div>
   </nav>
+  
+    <?php
+      //#TODO:: Only work with query based url. need to think for segment based url
+      if(array_key_exists("path",$_GET)){
+    		$root_cat = substr($_GET["path"],0,2);
+    		if($root_cat == '59'){
+    		  $cat1 = $categories[0];
+    		}
+    		else if ($root_cat == '60'){
+    		  $cat1 = $categories[1];
+    		}
+    		else if ($root_cat == '61'){
+    		  $cat1 = $categories[2];
+  		  } else {
+  			  $cat1 = null;
+  		  }
+	    }
+    ?>
+
+    <?php if (isset($cat1) && $cat1['children']) { ?>
+    <nav class="navbar" style="margin-top:-20px;">
+    <ul class="nav navbar-nav">
+        <?php foreach ($cat1['children'] as $cat2) { ?>
+        <?php if(sizeof($cat2['children']) > 0) : ?>
+            <li class="dropdown">
+                <a href="<?php echo $cat2['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $cat2['name']; ?> <b class="caret"></b> </a>
+                <?php if (sizeof($cat2['children']) > 0) : ?>
+                    <ul class="dropdown-menu"">
+                    <?php foreach($cat2['children'] as $cat3) : ?>
+                        <li><a href="<?php echo $cat3['href']; ?>"><?php echo $cat3['name']; ?></a></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </li>
+        <?php else : ?>
+            <li><a href="<?php echo $cat2['href']; ?>"><?php echo $cat2['name']; ?></a></li>
+        <?php endif; ?>
+        <?php } ?>
+    </ul>
+    </nav>
+    <?php } ?>
+
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+  
 </div>
 <?php } ?>
