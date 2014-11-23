@@ -101,9 +101,11 @@ class ControllerCommonHeader extends Controller {
 						'filter_sub_category' => true
 					);
 
+                    $thirdLevel = $this->model_catalog_category->getCategories($child['category_id']);
 					$children_data[] = array(
 						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
+                        'child' => $thirdLevel,
 					);
 				}
 
