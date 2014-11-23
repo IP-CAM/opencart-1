@@ -87,9 +87,9 @@
 </header>
 
 <?php if ($categories) { ?>
-<div class="cat1_wrapper" id="menu">
+<div class="cat1_wrapper">
 <div class="container">
-  <nav class="cat1_menu">
+  <nav class="navbar cat1_menu" id="menu">
     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
     </div>
@@ -98,6 +98,7 @@
         <?php foreach ($categories as $category) { ?>
             <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
         <?php } ?>
+          <li class="pull-right"><a href="#" class="dropdown-toggle">Custom Order</a>
       </ul>
     </div>
   </nav>
@@ -156,7 +157,11 @@
         .cat1_menu{
             font-size:13px;
         }
+        .cat1_menu ul:first-child{
+            width: 100%;
+        }
         .cat2_wrapper{
+            margin-top: -22px;
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
             min-height:48px;
