@@ -94,7 +94,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <?php foreach ($categories as $category) { ?>
-        <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
+            <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
         <?php } ?>
       </ul>
     </div>
@@ -122,7 +122,7 @@
     <nav class="navbar" style="margin-top:-20px;">
     <ul class="nav navbar-nav">
         <?php foreach ($cat1['children'] as $cat2) { ?>
-        <?php if(sizeof($cat2['children']) > 0) : ?>
+        <?php if(isset($cat2['children']) && sizeof($cat2['children']) > 0) : ?>
             <li class="dropdown">
                 <a href="<?php echo $cat2['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $cat2['name']; ?> <b class="caret"></b> </a>
                 <?php if (sizeof($cat2['children']) > 0) : ?>
