@@ -24,7 +24,8 @@
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<!--<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />-->
+<link href="http://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
@@ -65,6 +66,7 @@
     </div>
   </div>
 </nav>
+
 <header>
   <div class="container">
     <div class="row">
@@ -85,9 +87,9 @@
 </header>
 
 <?php if ($categories) { ?>
-
+<div class="cat1_wrapper" id="menu">
 <div class="container">
-  <nav id="menu" class="navbar">
+  <nav class="cat1_menu">
     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
     </div>
@@ -99,7 +101,10 @@
       </ul>
     </div>
   </nav>
-  
+</div>
+</div>
+
+<div class="container">
     <?php
       //#TODO:: Only work with query based url. need to think for segment based url
       if(array_key_exists("path",$_GET)){
@@ -119,8 +124,8 @@
     ?>
 
     <?php if (isset($cat1) && $cat1['children']) { ?>
-    <nav class="navbar" style="margin-top:-20px;">
-    <ul class="nav navbar-nav">
+    <nav class="navbar cat2_wrapper">
+    <ul class="nav navbar-nav cat2_menu">
         <?php foreach ($cat1['children'] as $cat2) { ?>
         <?php if(isset($cat2['children']) && sizeof($cat2['children']) > 0) : ?>
             <li class="dropdown">
@@ -144,6 +149,24 @@
     <style>
         .dropdown:hover .dropdown-menu {
             display: block;
+        }
+        .cat1_wrapper{
+
+        }
+        .cat1_menu{
+            font-size:13px;
+        }
+        .cat2_wrapper{
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            min-height:48px;
+            max-height:48px;
+        }
+        .cat2_menu{
+            width:100%;padding:0px;font-size:15px;line-height:12px;
+        }
+        .cat2_menu li a{
+            padding:12px 25px;
         }
     </style>
   
