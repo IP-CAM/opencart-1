@@ -155,6 +155,9 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
+        $data['custom_order'] =  $this->url->link('custom/order');
+        $data['text_custom_order'] =  'Custom Order';
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {

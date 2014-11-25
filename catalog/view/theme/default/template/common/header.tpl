@@ -98,7 +98,7 @@
         <?php foreach ($categories as $category) { ?>
             <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
         <?php } ?>
-          <li class="pull-right"><a href="#" class="dropdown-toggle">Custom Order</a>
+          <li class="pull-right"><a href="<?php echo $custom_order ?>" class="dropdown-toggle"><?php echo $text_custom_order ?></a>
       </ul>
     </div>
   </nav>
