@@ -701,3 +701,11 @@ h2.price {
 .flex-direction-nav a:before {
 	line-height: 40px;
 }
+
+
+
+/* Custom CSS */
+.product-thumb .button-group button{
+    width:100%;
+}
+

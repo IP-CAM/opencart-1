@@ -14,3 +14,5 @@ $_['text_logout']        = 'Logout';
 $_['text_checkout']      = 'Checkout';
 $_['text_search']        = 'Search';
 $_['text_all']           = 'See All';
+
+$_['text_custom_order'] = 'အထူးေအာ္ဒါမွာယူရန္';

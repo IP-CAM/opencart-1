@@ -50,6 +50,8 @@ class ControllerCommonHeader extends Controller {
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
 
+        $data['text_custom_order'] = $this->language->get('text_custom_order');
+        
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['logged'] = $this->customer->isLogged();
@@ -156,7 +158,7 @@ class ControllerCommonHeader extends Controller {
 		}
 
         $data['custom_order'] =  $this->url->link('custom/order');
-        $data['text_custom_order'] =  'Custom Order';
+        
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
