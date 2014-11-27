@@ -14,7 +14,7 @@ class ControllerCustomOrder extends Controller {
         );
 
         $data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_custom_order'),
+            'text' => $this->language->get('text_custom_order_breadchrumb'),
             'href' => $this->url->link('custom/order')
         );
 
