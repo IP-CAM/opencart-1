@@ -4,16 +4,16 @@ $_['heading_title']                  = 'Checkout';
 
 // Text
 $_['text_cart']                      = 'Shopping Cart';
-$_['text_checkout_option']           = 'Step 1: Checkout Options';
+$_['text_checkout_option']           = '၁) Login ၀င္ပါ။';//Step 1: Checkout Options';
 $_['text_checkout_account']          = 'Step 2: Account &amp; Billing Details';
 $_['text_checkout_payment_address']  = 'Step 2: Billing Details';
-$_['text_checkout_shipping_address'] = 'Step 3: Delivery Details';
+$_['text_checkout_shipping_address'] = '၂) ပိုု႔ေပးရမည့္လိပ္စာေျပာပါ။';//'Step 2: Delivery Details';
 $_['text_checkout_shipping_method']  = 'Step 4: Delivery Method';
 $_['text_checkout_payment_method']   = 'Step 5: Payment Method';
-$_['text_checkout_confirm']          = 'Step 6: Confirm Order';
+$_['text_checkout_confirm']          = '၃) Confirm လုုပ္ေပးပါ။';
 $_['text_modify']                    = 'Modify &raquo;';
 $_['text_new_customer']              = 'New Customer';
-$_['text_returning_customer']        = 'Returning Customer';
+$_['text_returning_customer']        = 'Existing Customer';
 $_['text_checkout']                  = 'Checkout Options:';
 $_['text_i_am_returning_customer']   = 'I am a returning customer';
 $_['text_register']                  = 'Register Account';
@@ -52,19 +52,19 @@ $_['entry_email_address']            = 'E-Mail Address';
 $_['entry_email']                    = 'E-Mail';
 $_['entry_password']                 = 'Password';
 $_['entry_confirm']                  = 'Password Confirm';
-$_['entry_firstname']                = 'First Name';
+$_['entry_firstname']                = 'Name';
 $_['entry_lastname']                 = 'Last Name';
 $_['entry_telephone']                = 'Telephone';
 $_['entry_fax']                      = 'Fax';
 $_['entry_address']                  = 'Choose Address';
 $_['entry_company']                  = 'Company';
 $_['entry_customer_group']           = 'Customer Group';
-$_['entry_address_1']                = 'Address 1';
+$_['entry_address_1']                = 'Address';
 $_['entry_address_2']                = 'Address 2';
 $_['entry_postcode']                 = 'Post Code';
 $_['entry_city']                     = 'City';
 $_['entry_country']                  = 'Country';
-$_['entry_zone']                     = 'Region / State';
+$_['entry_zone']                     = 'City';
 $_['entry_newsletter']               = 'I wish to subscribe to the %s newsletter.';
 $_['entry_shipping'] 	             = 'My delivery and billing addresses are the same.';
 
@@ -91,3 +91,6 @@ $_['error_no_shipping']              = 'Warning: No Shipping options are availab
 $_['error_payment']                  = 'Warning: Payment method required!';
 $_['error_no_payment']               = 'Warning: No Payment options are available. Please <a href="%s">contact us</a> for assistance!';
 $_['error_custom_field']             = '%s required!';
+
+$_['error_picker_name']             = 'Please Provide the name.';//picker name
+$_['error_picker_telephone']      = 'Please provide the telephone number.';//picker's phone

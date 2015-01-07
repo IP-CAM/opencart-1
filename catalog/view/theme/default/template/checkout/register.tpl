@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="border:1px solid green;">
   <div class="col-sm-6">
     <fieldset id="account">
       <legend><?php echo $text_your_details; ?></legend>
@@ -24,10 +24,12 @@
         <label class="control-label" for="input-payment-firstname"><?php echo $entry_firstname; ?></label>
         <input type="text" name="firstname" value="" placeholder="<?php echo $entry_firstname; ?>" id="input-payment-firstname" class="form-control" />
       </div>
+      <!----
       <div class="form-group required">
         <label class="control-label" for="input-payment-lastname"><?php echo $entry_lastname; ?></label>
         <input type="text" name="lastname" value="" placeholder="<?php echo $entry_lastname; ?>" id="input-payment-lastname" class="form-control" />
       </div>
+      -->
       <div class="form-group required">
         <label class="control-label" for="input-payment-email"><?php echo $entry_email; ?></label>
         <input type="text" name="email" value="" placeholder="<?php echo $entry_email; ?>" id="input-payment-email" class="form-control" />
@@ -36,10 +38,12 @@
         <label class="control-label" for="input-payment-telephone"><?php echo $entry_telephone; ?></label>
         <input type="text" name="telephone" value="" placeholder="<?php echo $entry_telephone; ?>" id="input-payment-telephone" class="form-control" />
       </div>
+      <!----
       <div class="form-group">
         <label class="control-label" for="input-payment-fax"><?php echo $entry_fax; ?></label>
         <input type="text" name="fax" value="" placeholder="<?php echo $entry_fax; ?>" id="input-payment-fax" class="form-control" />
       </div>
+      -->
       <?php foreach ($custom_fields as $custom_field) { ?>
       <?php if ($custom_field['location'] == 'account') { ?>
       <?php if ($custom_field['type'] == 'select') { ?>
@@ -285,7 +289,7 @@
 </div>
 <div class="checkbox">
   <label for="newsletter">
-    <input type="checkbox" name="newsletter" value="1" id="newsletter" />
+    <input type="checkbox" name="newsletter" value="1" id="newsletter" checked="true"/>
     <?php echo $entry_newsletter; ?></label>
 </div>
 <?php if ($shipping_required) { ?>

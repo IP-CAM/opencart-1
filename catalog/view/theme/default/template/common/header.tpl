@@ -42,7 +42,11 @@
 <body class="<?php echo $class; ?>">
 <nav id="top">
   <div class="container">
-    <?php echo $language; ?>
+    <div id="top-links" class="nav pull-left top-menu">
+        <?php foreach ($categories as $category) { ?>
+            <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+        <?php } ?>
+    </div>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
@@ -98,7 +102,6 @@
         <?php foreach ($categories as $category) { ?>
             <li><a href="<?php echo $category['href']; ?>" class="dropdown-toggle"><?php echo $category['name']; ?></a>
         <?php } ?>
-          <li class="pull-right"><a href="<?php echo $custom_order ?>" class="dropdown-toggle"><?php echo $text_custom_order ?></a>
       </ul>
     </div>
   </nav>

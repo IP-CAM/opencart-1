@@ -1,35 +1,46 @@
 <form class="form-horizontal">
-  <?php if ($addresses) { ?>
+	<?php if ($addresses) { ?>
   <div class="radio">
     <label>
-      <input type="radio" name="shipping_address" value="existing" checked="checked" />
-      <?php echo $text_address_existing; ?></label>
+      <input type="radio" name="shipping_address" value="existing" checked="checked" /><span>
+       ရွိျပီးသားလိပ္စာသံုုးမည္။ </span>
+      <!----<?php echo $text_address_existing; ?>--></label>
   </div>
   <div id="shipping-existing">
+    <label class="col-sm-0 control-label" for="address_id"></label>
+    <div class="col-sm-12">
     <select name="address_id" class="form-control">
       <?php foreach ($addresses as $address) { ?>
+      <!---- <?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?>-->
+      <?php 
+      	$address_string = '';
+      	$address_string .= ($address['firstname'] && $address['firstname'] != '') ? $address['firstname'].'. ' : '';
+      	$address_string .= $address['address_1'].' | '.$address['zone']; 
+      ?>
       <?php if ($address['address_id'] == $address_id) { ?>
-      <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+      <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address_string; ?></option>
       <?php } else { ?>
-      <option value="<?php echo $address['address_id']; ?>"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+      <option value="<?php echo $address['address_id']; ?>"><?php echo $address_string; ?></option>
       <?php } ?>
       <?php } ?>
-    </select>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="shipping_address" value="new" />
-      <?php echo $text_address_new; ?></label>
+    </select><br />
+    </div>
   </div>
   <?php } ?>
-  <br />
+  <div class="radio">
+    <label>
+      <input type="radio" name="shipping_address" value="new" <?php if(!$addresses){echo 'checked="checked"';} ?>  /><span></span>
+      <!----<?php echo $text_address_new; ?>-->လိပ္စာအသစ္သံုုးမည္။</span></label>
+  </div>
   <div id="shipping-new" style="display: <?php echo ($addresses ? 'none' : 'block'); ?>;">
-    <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-shipping-firstname"><?php echo $entry_firstname; ?></label>
+    <!----
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="input-shipping-firstname">ယူမည့္သူဧ။္ နာမည္</label>
       <div class="col-sm-10">
-        <input type="text" name="firstname" value="" placeholder="<?php echo $entry_firstname; ?>" id="input-shipping-firstname" class="form-control" />
+        <input type="text" name="firstname" value="<?php echo $customer->getFirstName(); ?>" placeholder="" id="input-shipping-firstname" class="form-control" />
       </div>
     </div>
+    
     <div class="form-group required">
       <label class="col-sm-2 control-label" for="input-shipping-lastname"><?php echo $entry_lastname; ?></label>
       <div class="col-sm-10">
@@ -41,13 +52,8 @@
       <div class="col-sm-10">
         <input type="text" name="company" value="" placeholder="<?php echo $entry_company; ?>" id="input-shipping-company" class="form-control" />
       </div>
-    </div>
-    <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-shipping-address-1"><?php echo $entry_address_1; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="address_1" value="" placeholder="<?php echo $entry_address_1; ?>" id="input-shipping-address-1" class="form-control" />
-      </div>
-    </div>
+    </div>-->
+    <!----
     <div class="form-group">
       <label class="col-sm-2 control-label" for="input-shipping-address-2"><?php echo $entry_address_2; ?></label>
       <div class="col-sm-10">
@@ -80,14 +86,27 @@
           <?php } ?>
         </select>
       </div>
+    </div>-->
+    <div class="form-group required">
+      <label class="col-sm-2 control-label" for="input-shipping-address-1">ပိုု႔ေပးရမည့္ လိပ္စာ</label>
+      <div class="col-sm-10">
+        <!---- <input type="text" name="address_1" value="" placeholder="<?php echo $entry_address_1; ?>" id="input-shipping-address-1" class="form-control" /> -->
+        <textarea name="address_1" id="input-shipping-address-1" class="form-control"></textarea>
+      </div>
     </div>
     <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-shipping-zone"><?php echo $entry_zone; ?></label>
+      <label class="col-sm-2 control-label" for="input-shipping-zone">ျမိဳ႔</label>
       <div class="col-sm-10">
         <select name="zone_id" id="input-shipping-zone" class="form-control">
+            <option value="">-- select --</option>
+            <?php foreach($zones as $zone) : ?>
+                <option value="<?php echo $zone['zone_id'] ?>" ><?php echo $zone['name']; ?></option>
+            <?php endforeach; ?>
         </select>
       </div>
     </div>
+    
+    <!----
     <?php foreach ($custom_fields as $custom_field) { ?>
     <?php if ($custom_field['location'] == 'address') { ?>
     <?php if ($custom_field['type'] == 'select') { ?>
@@ -198,20 +217,68 @@
     <?php } ?>
     <?php } ?>
     <?php } ?>
+    -->
+  <br />  
   </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="shipping_address" value="outletpickup" /><span>
+      <!----I want to pickup at an Beauty Advisor's outlet-->Beauty Advisor ဧ။္ဆိုုင္ခြဲမ်ားတြင္ သြားယူမည္။</span></label>
+  </div>
+	<div id="shipping-pickup" style="display:none;">
+	  <label class="col-sm-0 control-label" for="outlet_pickup_id"></label>
+    <div class="col-sm-12">
+    <select name="outlet_pickup_id" class="form-control">
+      <?php foreach ($outlet_addresses as $address) : ?>
+        <option value="<?php echo $address['id']; ?>"><?php echo $address['address']; ?></option>
+      <?php endforeach; ?>
+    </select><br />
+    </div>
+  </div>
+  
+  <div style="clear:both;border-top:1px dotted #e0e0e0;margin:20px 0px 20px 0px;"></div>
+    
+  <div class="form-group required">
+      <label class="col-sm-2 control-label" for="input-shipping-picker-name">ယူမည့္သူဧ။္ နာမည္</label>
+      <div class="col-sm-10">
+        <input type="text" style="width:60%;" name="picker_name" value="<?php echo $customer->getFirstName(); ?>" placeholder="" id="input-shipping-picker-name" class="form-control" />
+      </div>
+  </div>
+  
+  <div class="form-group required">
+    <label class="col-sm-2 control-label" for="input-shipping-picker-telephone">ယခုု Order အတြက္ <br/>ဆက္သြယ္ရန္ ဖုုန္းနံပါတ္</label>
+    <div class="col-sm-10">
+      <input name="picker_telephone" type="text" style="width:60%;" value="<?php echo $customer->getTelephone(); ?>" id="input-shipping-picker-telephone" class="form-control" />
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="input-order-specific-comment">Comments</label>
+    <div class="col-sm-10">
+      <textarea name="order_specific_comment" style="min-height:100px;width:60%;" id="input-order-specific-comment" class="form-control"></textarea>
+    </div>
+  </div>
+    
   <div class="buttons clearfix">
     <div class="pull-right">
       <input type="button" value="<?php echo $button_continue; ?>" id="button-shipping-address" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
     </div>
   </div>
 </form>
+
 <script type="text/javascript"><!--
 $('input[name=\'shipping_address\']').on('change', function() {
 	if (this.value == 'new') {
+		$('#shipping-pickup').hide();
 		$('#shipping-existing').hide();
 		$('#shipping-new').show();
-	} else {
+	} else if(this.value == 'existing'){
+		$('#shipping-pickup').hide();
 		$('#shipping-existing').show();
+		$('#shipping-new').hide();
+	} else {
+		$('#shipping-pickup').css({display:'block'});
+		$('#shipping-existing').hide();
 		$('#shipping-new').hide();
 	}
 });
@@ -232,7 +299,7 @@ $('#collapse-shipping-address .form-group[data-sort]').detach().each(function() 
 });
 //--></script>
 <script type="text/javascript"><!--
-$('#collapse-shipping-address button[id^=\'button-shipping-custom-field\']').on('click', function() {
+$('#collapse-shipping-address button[id^=\'button-shipping-custom-field\']').on('click', function() {alert('aa');
 	var node = this;
 
 	$('#form-upload').remove();
@@ -290,7 +357,7 @@ $('.datetime').datetimepicker({
 	pickTime: true
 });
 //--></script>
-<script type="text/javascript"><!--
+<!--<script type="text/javascript">
 $('#collapse-shipping-address select[name=\'country_id\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
@@ -335,4 +402,5 @@ $('#collapse-shipping-address select[name=\'country_id\']').on('change', functio
 });
 
 $('#collapse-shipping-address select[name=\'country_id\']').trigger('change');
-//--></script>
+</script>
+-->

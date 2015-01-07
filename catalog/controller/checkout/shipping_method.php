@@ -76,7 +76,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 		}
 	}
 
-	public function save() {
+	public function save() {//var_dump($_POST);exit;
 		$this->load->language('checkout/checkout');
 
 		$json = array();

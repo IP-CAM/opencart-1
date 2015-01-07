@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-horizontal" style="border:1px solid red;">
   <?php if ($addresses) { ?>
   <div class="radio">
     <label>

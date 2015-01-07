@@ -63,6 +63,7 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['text_checkout_payment_method'] = $this->language->get('text_checkout_payment_method');
 		$data['text_checkout_confirm'] = $this->language->get('text_checkout_confirm');
 
+		
 		if (isset($this->session->data['error'])) {
 			$data['error_warning'] = $this->session->data['error'];
 			unset($this->session->data['error']);

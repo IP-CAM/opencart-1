@@ -708,4 +708,10 @@ h2.price {
 .product-thumb .button-group button{
     width:100%;
 }
+#top{height:40px;}
+#top-links a, #top-links li{color:#333332;}
+.top-menu{}
+#top-links .dropdown-menu a:hover{background-color:#333332;background-image:none;color:#F0F1EE;}
+#logo{margin-top:-20px;}
+#menu{background-color:#4B77BE;background-image:none;}
 

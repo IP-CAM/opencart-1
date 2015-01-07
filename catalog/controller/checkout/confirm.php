@@ -2,7 +2,104 @@
 class ControllerCheckoutConfirm extends Controller {
 	public function index() {
 		$redirect = '';
+    
+        //#TODO::hardcode values
+        $this->request->post['payment_method'] = 'cod';
+        $this->request->post['shipping_method'] = 'flat.flat';
+        //hard copied payment method - start
+        $this->session->data['payment_address'] = $this->session->data['shipping_address'];
+		if (isset($this->session->data['payment_address'])) {
+			// Selected payment methods should be from cart sub total not total!
+			$total = $this->cart->getSubTotal();
 
+			// Payment Methods
+			$method_data = array();
+
+			$this->load->model('extension/extension');
+
+			$results = $this->model_extension_extension->getExtensions('payment');
+
+			$recurring = $this->cart->hasRecurringProducts();
+
+			foreach ($results as $result) {
+				if ($this->config->get($result['code'] . '_status')) {
+					$this->load->model('payment/' . $result['code']);
+
+					$method = $this->{'model_payment_' . $result['code']}->getMethod($this->session->data['payment_address'], $total);
+
+					if ($method) {
+						if ($recurring) {
+							if (method_exists($this->{'model_payment_' . $result['code']}, 'recurringPayments') && $this->{'model_payment_' . $result['code']}->recurringPayments()) {
+								$method_data[$result['code']] = $method;
+							}
+						} else {
+							$method_data[$result['code']] = $method;
+						}
+					}
+				}
+			}
+
+			$sort_order = array();
+
+			foreach ($method_data as $key => $value) {
+				$sort_order[$key] = $value['sort_order'];
+			}
+
+			array_multisort($sort_order, SORT_ASC, $method_data);
+
+			$this->session->data['payment_methods'] = $method_data;
+		}
+        $this->session->data['payment_method'] = $this->session->data['payment_methods'][$this->request->post['payment_method']];
+        //hard copied payment method - end
+        
+        //hard copied shipping method - start
+        if (isset($this->session->data['shipping_address'])) {
+			// Shipping Methods
+			$method_data = array();
+
+			$this->load->model('extension/extension');
+
+			$results = $this->model_extension_extension->getExtensions('shipping');
+
+			foreach ($results as $result) {
+				if ($this->config->get($result['code'] . '_status')) {
+					$this->load->model('shipping/' . $result['code']);
+
+					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+
+					if ($quote) {
+						$method_data[$result['code']] = array(
+							'title'      => $quote['title'],
+							'quote'      => $quote['quote'],
+							'sort_order' => $quote['sort_order'],
+							'error'      => $quote['error']
+						);
+					}
+				}
+			}
+
+			$sort_order = array();
+
+			foreach ($method_data as $key => $value) {
+				$sort_order[$key] = $value['sort_order'];
+			}
+
+			array_multisort($sort_order, SORT_ASC, $method_data);
+
+			$this->session->data['shipping_methods'] = $method_data;
+		}
+        $shipping = explode('.', $this->request->post['shipping_method']);
+        $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+        //hard copied shipping method - end
+        
+        
+        
+        //--------------------------------------
+        
+        
+        $shipping = explode('.', $this->request->post['shipping_method']);
+        $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+        
 		if ($this->cart->hasShipping()) {
 			// Validate if shipping address has been set.
 			if (!isset($this->session->data['shipping_address'])) {
@@ -28,7 +125,7 @@ class ControllerCheckoutConfirm extends Controller {
 		if (!isset($this->session->data['payment_method'])) {
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
 		}
-
+        
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$redirect = $this->url->link('checkout/cart');
@@ -107,10 +204,10 @@ class ControllerCheckoutConfirm extends Controller {
 
 				$order_data['customer_id'] = $this->customer->getId();
 				$order_data['customer_group_id'] = $customer_info['customer_group_id'];
-				$order_data['firstname'] = $customer_info['firstname'];
+				$order_data['firstname'] = $this->session->data['custom']['picker_name'];
 				$order_data['lastname'] = $customer_info['lastname'];
 				$order_data['email'] = $customer_info['email'];
-				$order_data['telephone'] = $customer_info['telephone'];
+				$order_data['telephone'] = $this->session->data['custom']['picker_telephone'];
 				$order_data['fax'] = $customer_info['fax'];
 				$order_data['custom_field'] = unserialize($customer_info['custom_field']);
 			} elseif (isset($this->session->data['guest'])) {
@@ -245,7 +342,7 @@ class ControllerCheckoutConfirm extends Controller {
 				}
 			}
 
-			$order_data['comment'] = $this->session->data['comment'];
+			$order_data['comment'] = $this->session->data['custom']['order_specific_comment'];
 			$order_data['total'] = $total;
 
 			if (isset($this->request->cookie['tracking'])) {

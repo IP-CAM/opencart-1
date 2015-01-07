@@ -2,7 +2,7 @@
 class ControllerCheckoutPaymentMethod extends Controller {
 	public function index() {
 		$this->load->language('checkout/checkout');
-
+        $this->session->data['payment_address'] = $this->session->data['shipping_address'];
 		if (isset($this->session->data['payment_address'])) {
 			// Selected payment methods should be from cart sub total not total!
 			$total = $this->cart->getSubTotal();
