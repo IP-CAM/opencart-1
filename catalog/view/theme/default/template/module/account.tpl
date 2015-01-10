@@ -9,9 +9,9 @@
     <a href="<?php echo $account; ?>" class="list-group-item"><?php echo $text_account; ?></a>
     <a href="<?php echo $edit; ?>" class="list-group-item"><?php echo $text_edit; ?></a> 
     <a href="<?php echo $password; ?>" class="list-group-item"><?php echo $text_password; ?></a>
+    <a href="<?php echo $order; ?>" class="list-group-item"><?php echo $text_order; ?></a>
     <a href="<?php echo $address; ?>" class="list-group-item"><?php echo $text_address; ?></a> 
     <!----<a href="<?php echo $wishlist; ?>" class="list-group-item"><?php echo $text_wishlist; ?></a-->
-    <a href="<?php echo $order; ?>" class="list-group-item"><?php echo $text_order; ?></a>
     <!----<a href="<?php echo $download; ?>" class="list-group-item"><?php echo $text_download; ?></a>-->
     <!---- <a href="<?php echo $reward; ?>" class="list-group-item"><?php echo $text_reward; ?></a> -->
     <!----<a href="<?php echo $return; ?>" class="list-group-item"><?php echo $text_return; ?></a> -->

@@ -15,7 +15,9 @@
       <?php 
       	$address_string = '';
       	$address_string .= ($address['firstname'] && $address['firstname'] != '') ? $address['firstname'].'. ' : '';
-      	$address_string .= $address['address_1'].' | '.$address['zone']; 
+
+      	$address_string .= $address['address_1'];
+        $address_string .= ($address['zone_d']) ? ' | '.$address['zone'] : ''; 
       ?>
       <?php if ($address['address_id'] == $address_id) { ?>
       <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address_string; ?></option>
@@ -91,10 +93,10 @@
       <label class="col-sm-2 control-label" for="input-shipping-address-1">ပိုု႔ေပးရမည့္ လိပ္စာ</label>
       <div class="col-sm-10">
         <!---- <input type="text" name="address_1" value="" placeholder="<?php echo $entry_address_1; ?>" id="input-shipping-address-1" class="form-control" /> -->
-        <textarea name="address_1" id="input-shipping-address-1" class="form-control"></textarea>
+        <textarea name="address_1" id="input-shipping-address-1" rows="4" class="form-control"></textarea>
       </div>
     </div>
-    <div class="form-group required">
+    <div class="form-group">
       <label class="col-sm-2 control-label" for="input-shipping-zone">ျမိဳ႔</label>
       <div class="col-sm-10">
         <select name="zone_id" id="input-shipping-zone" class="form-control">
@@ -228,11 +230,10 @@
 	<div id="shipping-pickup" style="display:none;">
 	  <label class="col-sm-0 control-label" for="outlet_pickup_id"></label>
     <div class="col-sm-12">
-    <select name="outlet_pickup_id" class="form-control" multiple>
       <?php foreach ($outlet_addresses as $address) : ?>
-        <option value="<?php echo $address['id']; ?>"><?php echo $address['address']; ?></option>
+        <input type="radio" name="outlet_pickup_id" value="<?php echo $address['id']; ?>" /> &nbsp;&nbsp;<?php echo $address['address']; ?></br>
       <?php endforeach; ?>
-    </select><br />
+    <br />
     </div>
   </div>
   

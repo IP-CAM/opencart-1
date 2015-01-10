@@ -87,7 +87,7 @@ class ControllerCommonHeader extends Controller {
 		$this->load->model('catalog/product');
 
 		$data['categories'] = array();
-
+		
 		$categories = $this->model_catalog_category->getCategories(0);
 
 		foreach ($categories as $category) {
@@ -135,6 +135,56 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
+		//Promoted category group
+		$data['promoted_categories'] = array();
+		$promoted_categories_id = 59; //#TODO: hardcoded promoted category
+		$categories = $this->model_catalog_category->getCategories($promoted_categories_id);
+		foreach ($categories as $category) {
+		
+			// Level 2
+			$children_data = array();
+
+			$children = $this->model_catalog_category->getCategories($category['category_id']);
+
+			foreach ($children as $child) {
+				/*
+                $cat3_data = array();
+                $cats3  = $this->model_catalog_category->getCategories($child['category_id']);
+                foreach ($cats3 as $cat3) {
+                    $filter_data = array(
+                        'filter_category_id' => $cat3['category_id'],
+                        'filter_sub_category' => true
+                    );
+
+                    $cat3_data[] = array(
+                        'name'  => $cat3['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+                        'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']) . '_' . $cat3['category_id']
+                    );
+                }
+				*/
+                $filter_data = array(
+					'filter_category_id'  => $child['category_id'],
+					'filter_sub_category' => true
+				);
+
+				$children_data[] = array(
+					'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+					'href'  => $this->url->link('product/category', 'path=' . $promoted_categories_id.'_'.$category['category_id'] . '_' . $child['category_id']),
+                    'children' => $cat3_data
+				);
+			}
+			
+			// Level 1
+			$data['promoted_categories'][] = array(
+				'name'     => $category['name'],
+				'children' => $children_data,
+				'column'   => $category['column'] ? $category['column'] : 1,
+				'href'     => $this->url->link('product/category', 'path=' . $promoted_categories_id.'_'.$category['category_id'])
+			);
+			
+		}
+		
+		
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

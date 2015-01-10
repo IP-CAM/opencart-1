@@ -142,7 +142,7 @@
             <?php if ($reward) { ?>
             <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
             <?php } ?>
-            <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+            <!----<li><?php echo $text_stock; ?> <?php echo $stock; ?></li>-->
           </ul>
           <?php if ($price) { ?>
           <ul class="list-unstyled">
@@ -166,6 +166,7 @@
             <li><?php echo $text_points; ?> <?php echo $points; ?></li>
             <?php } ?>
             -->
+            <!----
             <?php if ($discounts) { ?>
             <li>
               <hr>
@@ -173,7 +174,7 @@
             <?php foreach ($discounts as $discount) { ?>
             <li><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></li>
             <?php } ?>
-            <?php } ?>
+            <?php } ?>-->
           </ul>
           <?php } ?>
           <div id="product">
@@ -314,11 +315,12 @@
               <div class="help-block" id="recurring-description"></div>
             </div>
             <?php } ?>
+            <br />
             <div class="form-group">
-              <label class="control-label" for="input-quantity" style="display:inline-block;"><?php echo $entry_qty; ?></label>
-              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" style="display:inline-block;" />
+              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
+              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" min="<?php echo $minimum; ?>" />
               <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-              <br />
+              <br /><br />
               <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
             </div>
             <?php if ($minimum > 1) { ?>
@@ -338,8 +340,8 @@
               <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>
             <hr>
             <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <!---- <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a>--></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
+             <!---- <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> -->
             <!-- AddThis Button END --> 
           </div>
           <?php } ?>
@@ -389,8 +391,8 @@
             </div>
             <div class="button-group">
               <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
+              <!----<button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
+              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>-->
             </div>
           </div>
         </div>

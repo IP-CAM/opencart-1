@@ -54,11 +54,11 @@ class ControllerCheckoutShippingAddress extends Controller {
 		}
 
 		$this->load->model('localisation/country');
-		$this->load->model('localisation/zone');
-
 		$data['countries'] = $this->model_localisation_country->getCountries();
+
+		$this->load->model('localisation/zone');
 		$data['zones'] = $this->model_localisation_zone->getZonesByCountryId(146);//#TODO:
-		
+
 		$data['customer'] = $this->customer;
 		
 		// Custom Fields
@@ -229,15 +229,15 @@ class ControllerCheckoutShippingAddress extends Controller {
 				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
 					$json['error']['postcode'] = $this->language->get('error_postcode');
 				}
-
+				
 				if ($this->request->post['country_id'] == '') {
 					$json['error']['country'] = $this->language->get('error_country');
 				}
-
+				/*----
 				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
 					$json['error']['zone'] = $this->language->get('error_zone');
 				}
-
+				*/
 				// Custom field validation
 				$this->load->model('account/custom_field');
 

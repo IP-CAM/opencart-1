@@ -44,11 +44,13 @@
   <div class="container">
     
     <div id="top-links" class="nav pull-left top-menu">
-        <!----<?php foreach ($categories as $category) { ?>
+        <!--<?php foreach ($categories as $category) { ?>
             <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
         <?php } ?>-->
-        <!----<a href="#"></i> Facebook Page</a>-->
-        
+        <a href="#"></i> Ladies Fashion</a>
+        <a href="#"></i> Perfumes </a>
+        <a href="#"></i> Facebook Page</a>
+
     </div>
 
     <div id="top-links" class="nav pull-right">
@@ -95,6 +97,7 @@
   </div>
 </header>
 
+<!--
 <?php if ($categories) { ?>
 <div class="cat1_wrapper">
 <div class="container">
@@ -112,8 +115,8 @@
   </nav>
 </div>
 </div>
-
-<div class="container">
+-->
+<!----
     <?php
       //#TODO:: Only work with query based url. need to think for segment based url
       if(array_key_exists("path",$_GET)){
@@ -129,7 +132,9 @@
   		  } else {
   			  $cat1 = null;
   		  }
-	    }
+	    } else {
+        $cat1 = $categories[0];
+      }
     ?>
 
     <?php if (isset($cat1) && $cat1['children']) { ?>
@@ -154,6 +159,30 @@
     </ul>
     </nav>
     <?php } ?>
+-->
+<div class="container">
+  <?php if (isset($promoted_categories)) { ?>
+    <nav class="navbar cat2_wrapper">
+    <ul class="nav navbar-nav cat2_menu">
+        <?php foreach ($promoted_categories as $cat2) { ?>
+        <?php if(isset($cat2['children']) && sizeof($cat2['children']) > 0) : ?>
+            <li class="dropdown">
+                <a href="<?php echo $cat2['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $cat2['name']; ?> <b class="caret"></b> </a>
+                <?php if (sizeof($cat2['children']) > 0) : ?>
+                    <ul class="dropdown-menu">
+                    <?php foreach($cat2['children'] as $cat3) : ?>
+                        <li><a href="<?php echo $cat3['href']; ?>"><?php echo $cat3['name']; ?></a></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </li>
+        <?php else : ?>
+            <li><a href="<?php echo $cat2['href']; ?>"><?php echo $cat2['name']; ?></a></li>
+        <?php endif; ?>
+        <?php } ?>
+    </ul>
+    </nav>
+  <?php } ?>    
 
     <style>
         .dropdown:hover .dropdown-menu {
@@ -169,14 +198,17 @@
             width: 100%;
         }
         .cat2_wrapper{
-            margin-top: -22px;
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
-            min-height:48px;
-            max-height:48px;
+            min-height:47px;
+            max-height:47px;
+            margin-top:10px;
         }
         .cat2_menu{
             width:100%;padding:0px;font-size:15px;line-height:12px;
+        }
+        .cat2_menu ul.dropdown-menu {
+            margin-top: -3px;
         }
         .cat2_menu li a{
             padding:12px 25px;

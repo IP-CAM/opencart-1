@@ -17,6 +17,7 @@
       <h2><?php echo $text_edit_address; ?></h2>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
+        <!----
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
             <div class="col-sm-10">
@@ -41,15 +42,17 @@
               <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />
             </div>
           </div>
+          ---->
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-address-1"><?php echo $entry_address_1; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" class="form-control" />
+              <textarea name="address_1" rows="4" id="input-address-1" class="form-control"><?php echo $address_1; ?></textarea>
               <?php if ($error_address_1) { ?>
               <div class="text-danger"><?php echo $error_address_1; ?></div>
               <?php } ?>
             </div>
           </div>
+          <!----
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-address-2"><?php echo $entry_address_2; ?></label>
             <div class="col-sm-10">
@@ -92,10 +95,15 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group required">
+          -->
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-zone"><?php echo $entry_zone; ?></label>
             <div class="col-sm-10">
               <select name="zone_id" id="input-zone" class="form-control">
+                <option value="">-- select --</option>
+                <?php foreach($zones as $zone) : ?>
+                    <option value="<?php echo $zone['zone_id'] ?>" <?php if($zone_id === $zone['zone_id']){echo 'selected';} ?>><?php echo $zone['name']; ?></option>
+                <?php endforeach; ?>
               </select>
               <?php if ($error_zone) { ?>
               <div class="text-danger"><?php echo $error_zone; ?></div>
@@ -255,6 +263,7 @@
           <?php } ?>
           <?php } ?>
           <?php } ?>
+          <!----
           <div class="form-group">
             <label class="col-sm-2 control-label"><?php echo $entry_default; ?></label>
             <div class="col-sm-10">
@@ -275,6 +284,7 @@
               <?php } ?>
             </div>
           </div>
+          -->
         </fieldset>
         <div class="buttons clearfix">
           <div class="pull-left"><a href="<?php echo $back; ?>" class="btn btn-default"><?php echo $button_back; ?></a></div>
