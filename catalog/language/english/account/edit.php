@@ -9,7 +9,7 @@ $_['text_your_details']  = 'Your Personal Details';
 $_['text_success']       = 'Success: Your account has been successfully updated.';
 
 // Entry
-$_['entry_firstname']    = 'First Name';
+$_['entry_firstname']    = 'Name';
 $_['entry_lastname']     = 'Last Name';
 $_['entry_email']        = 'E-Mail';
 $_['entry_telephone']    = 'Telephone';

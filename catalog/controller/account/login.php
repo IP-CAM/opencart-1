@@ -3,6 +3,9 @@ class ControllerAccountLogin extends Controller {
 	private $error = array();
 
 	public function index() {
+		$this->load->model('module/descriptions');
+		$data['why_should_you_register'] = $this->model_module_descriptions->getDescriptionByKey('why_should_you_register');
+
 		$this->load->model('account/customer');
 
 		// Login override for admin users
@@ -82,7 +85,8 @@ class ControllerAccountLogin extends Controller {
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
 				$this->response->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
 			} else {
-				$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+				//----$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+				$this->response->redirect($this->url->link('common/home', '', 'SSL'));
 			}
 		}
 

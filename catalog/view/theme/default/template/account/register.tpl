@@ -243,7 +243,7 @@
             </div>
           </div>
         </fieldset>
-        <fieldset>
+        <!----<fieldset>
           <legend><?php echo $text_newsletter; ?></legend>
           <div class="form-group">
             <label class="col-sm-2 control-label"><?php echo $entry_newsletter; ?></label>
@@ -265,7 +265,7 @@
               <?php } ?>
             </div>
           </div>
-        </fieldset>
+        </fieldset>-->
         <?php if ($text_agree) { ?>
         <div class="buttons">
           <div class="pull-right"><?php echo $text_agree; ?>
@@ -275,13 +275,13 @@
             <input type="checkbox" name="agree" value="1" />
             <?php } ?>
             &nbsp;
-            <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
+            <input type="submit" value="<?php echo $text_register; ?>" class="btn btn-primary" />
           </div>
         </div>
         <?php } else { ?>
         <div class="buttons">
           <div class="pull-right">
-            <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
+            <input type="submit" value="<?php echo $text_register; ?>" class="btn btn-primary" />
           </div>
         </div>
         <?php } ?>

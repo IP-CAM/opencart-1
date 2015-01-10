@@ -42,11 +42,15 @@
 <body class="<?php echo $class; ?>">
 <nav id="top">
   <div class="container">
+    
     <div id="top-links" class="nav pull-left top-menu">
-        <?php foreach ($categories as $category) { ?>
+        <!----<?php foreach ($categories as $category) { ?>
             <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
-        <?php } ?>
+        <?php } ?>-->
+        <!----<a href="#"></i> Facebook Page</a>-->
+        
     </div>
+
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
@@ -55,8 +59,8 @@
             <?php if ($logged) { ?>
             <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
             <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-            <!----<li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>-->
+            <!----<li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>-->
             <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
             <?php } else { ?>
             <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
@@ -65,7 +69,8 @@
           </ul>
         </li>
         <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
-        <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
+        <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
+        
       </ul>
     </div>
   </div>

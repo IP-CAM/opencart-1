@@ -228,7 +228,7 @@
 	<div id="shipping-pickup" style="display:none;">
 	  <label class="col-sm-0 control-label" for="outlet_pickup_id"></label>
     <div class="col-sm-12">
-    <select name="outlet_pickup_id" class="form-control">
+    <select name="outlet_pickup_id" class="form-control" multiple>
       <?php foreach ($outlet_addresses as $address) : ?>
         <option value="<?php echo $address['id']; ?>"><?php echo $address['address']; ?></option>
       <?php endforeach; ?>
