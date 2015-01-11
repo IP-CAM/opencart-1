@@ -22,6 +22,7 @@ class ControllerProductProduct extends Controller {
 			$category_id = (int)array_pop($parts);
 
 			foreach ($parts as $path_id) {
+				if($path_id == 59) continue; //#TODO:: hard coded parent skip category
 				if (!$path) {
 					$path = $path_id;
 				} else {
