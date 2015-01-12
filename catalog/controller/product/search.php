@@ -1,6 +1,11 @@
 <?php
 class ControllerProductSearch extends Controller {
 	public function index() {
+		$this->request->get['description'] = true;
+		$this->request->get['category_id'] = null;
+		$this->request->get['sub_category'] = true;
+
+		//--------
 		$this->load->language('product/search');
 
 		$this->load->model('catalog/category');
@@ -328,7 +333,7 @@ class ControllerProductSearch extends Controller {
 					'href'  => $this->url->link('product/search', 'sort=rating&order=ASC' . $url)
 				);
 			}
-
+			/*----
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_model_asc'),
 				'value' => 'p.model-ASC',
@@ -340,7 +345,7 @@ class ControllerProductSearch extends Controller {
 				'value' => 'p.model-DESC',
 				'href'  => $this->url->link('product/search', 'sort=p.model&order=DESC' . $url)
 			);
-
+			*/
 			$url = '';
 
 			if (isset($this->request->get['search'])) {

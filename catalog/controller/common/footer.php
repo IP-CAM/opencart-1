@@ -1,8 +1,12 @@
 <?php
 class ControllerCommonFooter extends Controller {
 	public function index() {
-		$this->load->language('common/footer');
 
+		$this->load->model('module/descriptions');
+		$data['fbpage_link'] = $this->model_module_descriptions->getDescriptionByKey('fbpage_link');
+		
+		$this->load->language('common/footer');
+		$data['text_fbpage'] = $this->language->get('text_fbpage');
 		$data['text_information'] = $this->language->get('text_information');
 		$data['text_service'] = $this->language->get('text_service');
 		$data['text_extra'] = $this->language->get('text_extra');
