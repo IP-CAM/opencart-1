@@ -14,7 +14,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
+      <h2><?php echo $heading_title; ?></h2>
       <?php if ($categories) { ?>
       <p><strong><?php echo $text_index; ?></strong>
         <?php foreach ($categories as $category) { ?>
@@ -22,12 +22,12 @@
         <?php } ?>
       </p>
       <?php foreach ($categories as $category) { ?>
-      <h2 id="<?php echo $category['name']; ?>"><?php echo $category['name']; ?></h2>
+      <h4 id="<?php echo $category['name']; ?>"><?php echo $category['name']; ?></h4>
       <?php if ($category['manufacturer']) { ?>
       <?php foreach (array_chunk($category['manufacturer'], 4) as $manufacturers) { ?>
       <div class="row">
         <?php foreach ($manufacturers as $manufacturer) { ?>
-        <div class="col-sm-3"><a href="<?php echo $manufacturer['href']; ?>"><?php echo $manufacturer['name']; ?></a></div>
+        <div class="col-sm-3"><h4><a href="<?php echo $manufacturer['href']; ?>"><?php echo $manufacturer['name']; ?></a></h4></div>
         <?php } ?>
       </div>
       <?php } ?>

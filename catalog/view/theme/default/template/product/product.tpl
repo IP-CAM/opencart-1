@@ -347,6 +347,7 @@
           <?php } ?>
         </div>
       </div>
+      <hr />
       <?php if ($products) { ?>
       <h3><?php echo $text_related; ?></h3>
       <div class="row">
@@ -382,10 +383,10 @@
                 <?php echo $product['price']; ?>
                 <?php } else { ?>
                 <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                <?php } ?>
+                <?php } ?><!----
                 <?php if ($product['tax']) { ?>
                 <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                <?php } ?>
+                <?php } ?>-->
               </p>
               <?php } ?>
             </div>

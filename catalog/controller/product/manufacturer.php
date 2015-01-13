@@ -276,7 +276,7 @@ class ControllerProductManufacturer extends Controller {
 					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . '&sort=rating&order=ASC' . $url)
 				);
 			}
-
+			/*----
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_model_asc'),
 				'value' => 'p.model-ASC',
@@ -288,7 +288,7 @@ class ControllerProductManufacturer extends Controller {
 				'value' => 'p.model-DESC',
 				'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . '&sort=p.model&order=DESC' . $url)
 			);
-
+			*/
 			$url = '';
 
 			if (isset($this->request->get['sort'])) {

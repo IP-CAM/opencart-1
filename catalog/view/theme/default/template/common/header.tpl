@@ -50,20 +50,39 @@
         <a href="#"></i> Ladies Fashion</a>
         <a href="#"></i> Perfumes </a>
         <a href="#"></i> Facebook Page</a>
-
     </div>
 
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Help </a>
+        <ul class="dropdown-menu dropdown-menu-left">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Dilivery & Payment</li>
+        </ul>
+      </li>
+      <?php if (!$logged) : ?>
+        <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li> &nbsp;
+        <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li> 
+      <?php else : ?>
+        <li><a href="#"><i class="fa fa-truck"></i> My Orders Status</a></li>
         <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+          </ul>
+        </li>
+      <?php endif; ?>
+
+        <!----<li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>-->
+        <!----<li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right">
             <?php if ($logged) { ?>
             <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li> -->
             <!----<li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
             <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>-->
-            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+            <!---- <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
             <?php } else { ?>
             <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
             <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
@@ -72,7 +91,7 @@
         </li>
         <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
         <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
-        
+        -->
       </ul>
     </div>
   </div>
@@ -180,11 +199,29 @@
             <li><a href="<?php echo $cat2['href']; ?>"><?php echo $cat2['name']; ?></a></li>
         <?php endif; ?>
         <?php } ?>
+
+        <li class="dropdown pull-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Popular Brands <b class="caret"></b> </a>
+          <ul class="dropdown-menu manufacturers-menu">
+          <?php foreach($manufacturers as $manufacturer) : ?>
+              <li><a class="menu-item" href="<?php echo $manufacturer['href']; ?>"><?php echo $manufacturer['name']; ?></a></li>
+          <?php endforeach; ?>
+          <li class="divider"></li>
+          <li><a class="menu-more-items" href="<?php echo $link_manufacturer; ?>">All Brands</a></li>
+          </ul>
+        </li>
     </ul>
     </nav>
   <?php } ?>    
 
     <style>
+        .manufacturers-menu .menu-item{
+            padding:8px 10px;  
+        }
+        .manufacturers-menu .menu-more-items{
+            padding:2px 10px;  
+        }
+        
         .dropdown:hover .dropdown-menu {
             display: block;
         }
@@ -217,3 +254,4 @@
   
 </div>
 <?php } ?>
+

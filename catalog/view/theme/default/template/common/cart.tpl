@@ -1,6 +1,9 @@
 <div id="cart" class="btn-group btn-block">
   <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total"><?php echo $text_items; ?></span></button>
   <ul class="dropdown-menu pull-right">
+    <li>
+      <div class="text-center" style="padding:10px;"><a href="<?php echo $cart; ?>" class="btn"><?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>" class="btn"><?php echo $text_checkout; ?></a></div>
+    </li>
     <?php if ($products || $vouchers) { ?>
     <li>
       <table class="table table-striped">
@@ -22,7 +25,7 @@
             <?php } ?></td>
           <td class="text-right">x <?php echo $product['quantity']; ?></td>
           <td class="text-right"><?php echo $product['total']; ?></td>
-          <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+          <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs" style="padding:3px 6px;">x</i></button></td>
         </tr>
         <?php } ?>
         <?php foreach ($vouchers as $voucher) { ?>
@@ -46,7 +49,6 @@
           </tr>
           <?php } ?>
         </table>
-        <p class="text-right"><a href="<?php echo $cart; ?>"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>"><strong><i class="fa fa-money"></i> <?php echo $text_checkout; ?></strong></a></p>
       </div>
     </li>
     <?php } else { ?>

@@ -1,6 +1,19 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
+		
+
+		$this->load->model('catalog/manufacturer');
+		$results = $this->model_catalog_manufacturer->getManufacturers();
+		$data['manufacturers'] = array();
+		foreach ($results as $result) {
+			$data['manufacturers'][] = array(
+				'name' => $result['name'],
+				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+			);
+		}
+		$data['link_manufacturer'] = $this->url->link('product/manufacturer');
+
 		$data['title'] = $this->document->getTitle();
 
 		if ($this->request->server['HTTPS']) {
