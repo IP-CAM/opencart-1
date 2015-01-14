@@ -39,8 +39,8 @@
         </ul>
       </div>
     </div>
-    <hr>
-    <p>© 2014</p>
+    <br />
   </div>
 </footer>
 </body></html>
+<script src="//128.199.209.81:35729/livereload.js"></script>

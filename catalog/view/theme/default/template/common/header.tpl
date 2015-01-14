@@ -40,39 +40,64 @@
 <?php echo $google_analytics; ?>
 </head>
 <body class="<?php echo $class; ?>">
+<div id="top-section">
 <nav id="top">
   <div class="container">
     
+    <!----
     <div id="top-links" class="nav pull-left top-menu">
-        <!--<?php foreach ($categories as $category) { ?>
-            <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
-        <?php } ?>-->
         <a href="#"></i> Ladies Fashion</a>
         <a href="#"></i> Perfumes </a>
         <a href="#"></i> Facebook Page</a>
+    </div>-->
+
+    <div class="continer">
+      <div class="row">
+        <div class="col-sm-3">
+          <div id="logo" >
+          <?php if ($logo) { ?>
+            <a href="<?php echo $home; ?>"><img style="margin-top:-3px;" src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+          <?php } else { ?>
+            <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
+          <?php } ?>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <?php echo $search; ?>
+        </div>  
+        <div class="col-sm-2">
+          <?php echo $cart; ?>
+        </div>
+        <div class="col-sm-3">
+          <div class="nav pull-right top-menu">
+            <ul class="list-inline">
+            <li class="dropdown lvl1 dropdown-toggle"><a href="#" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Help ?</a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                <li class="lvl2"><a href="#">FAQ</a></li>
+                <li class="lvl2"><a href="#">Dilivery & Payment</li>
+              </ul>
+            </li>
+            <?php if (!$logged) : ?>
+              <li class="lvl1"><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li> &nbsp;
+              <li class="lvl1"><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li> 
+            <?php else : ?>
+              <li class="lvl1"><a href="#"><i class="fa fa-truck"></i> My Orders</a></li>
+              <li class="dropdown lvl1 dropdown-toggle"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="lvl2"><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+                  <li class="lvl2"><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+                  <li class="lvl2"><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                </ul>
+              </li>
+            <?php endif; ?>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Help </a>
-        <ul class="dropdown-menu dropdown-menu-left">
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Dilivery & Payment</li>
-        </ul>
-      </li>
-      <?php if (!$logged) : ?>
-        <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li> &nbsp;
-        <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li> 
-      <?php else : ?>
-        <li><a href="#"><i class="fa fa-truck"></i> My Orders Status</a></li>
-        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-          </ul>
-        </li>
-      <?php endif; ?>
+    </div>
+    
 
         <!----<li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>-->
         <!----<li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
@@ -92,12 +117,9 @@
         <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
         <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
         -->
-      </ul>
-    </div>
-  </div>
 </nav>
-
-<header>
+<!----
+<header id="head-section">
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
@@ -115,7 +137,7 @@
     </div>
   </div>
 </header>
-
+-->
 <!--
 <?php if ($categories) { ?>
 <div class="cat1_wrapper">
@@ -179,79 +201,44 @@
     </nav>
     <?php } ?>
 -->
-<div class="container">
-  <?php if (isset($promoted_categories)) { ?>
-    <nav class="navbar cat2_wrapper">
-    <ul class="nav navbar-nav cat2_menu">
-        <?php foreach ($promoted_categories as $cat2) { ?>
-        <?php if(isset($cat2['children']) && sizeof($cat2['children']) > 0) : ?>
-            <li class="dropdown">
-                <a href="<?php echo $cat2['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $cat2['name']; ?> <b class="caret"></b> </a>
-                <?php if (sizeof($cat2['children']) > 0) : ?>
-                    <ul class="dropdown-menu">
-                    <?php foreach($cat2['children'] as $cat3) : ?>
-                        <li><a href="<?php echo $cat3['href']; ?>"><?php echo $cat3['name']; ?></a></li>
-                    <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </li>
-        <?php else : ?>
-            <li><a href="<?php echo $cat2['href']; ?>"><?php echo $cat2['name']; ?></a></li>
-        <?php endif; ?>
-        <?php } ?>
+  <div class="categories-wrapper">
+    <div class="container">
+    <?php if (isset($promoted_categories)) { ?>
+      <nav class="cat2_wrapper">
+      <ul class="nav navbar-nav cat2_menu">
+          <?php foreach ($promoted_categories as $cat2) { ?>
+          <?php if(isset($cat2['children']) && sizeof($cat2['children']) > 0) : ?>
+              <li class="dropdown">
+                  <a href="<?php echo $cat2['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $cat2['name']; ?> <b class="caret"></b> </a>
+                  <?php if (sizeof($cat2['children']) > 0) : ?>
+                      <ul class="dropdown-menu">
+                      <?php foreach($cat2['children'] as $cat3) : ?>
+                          <li><a href="<?php echo $cat3['href']; ?>"><?php echo $cat3['name']; ?></a></li>
+                      <?php endforeach; ?>
+                      </ul>
+                  <?php endif; ?>
+              </li>
+          <?php else : ?>
+              <li><a href="<?php echo $cat2['href']; ?>"><?php echo $cat2['name']; ?></a></li>
+          <?php endif; ?>
+          <?php } ?>
 
-        <li class="dropdown pull-right">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Popular Brands <b class="caret"></b> </a>
-          <ul class="dropdown-menu manufacturers-menu">
-          <?php foreach($manufacturers as $manufacturer) : ?>
-              <li><a class="menu-item" href="<?php echo $manufacturer['href']; ?>"><?php echo $manufacturer['name']; ?></a></li>
-          <?php endforeach; ?>
-          <li class="divider"></li>
-          <li><a class="menu-more-items" href="<?php echo $link_manufacturer; ?>">All Brands</a></li>
-          </ul>
-        </li>
-    </ul>
-    </nav>
-  <?php } ?>    
+          <li class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Popular Brands <b class="caret"></b> </a>
+            <ul class="dropdown-menu manufacturers-menu">
+            <?php foreach($manufacturers as $manufacturer) : ?>
+                <li><a class="menu-item" href="<?php echo $manufacturer['href']; ?>"><?php echo $manufacturer['name']; ?></a></li>
+            <?php endforeach; ?>
+            <li class="divider"></li>
+            <li><a class="menu-more-items" href="<?php echo $link_manufacturer; ?>">All Brands</a></li>
+            </ul>
+          </li>
+      </ul>
+      </nav>
+    <?php } ?>    
+    </div>  
+  </div>
 
-    <style>
-        .manufacturers-menu .menu-item{
-            padding:8px 10px;  
-        }
-        .manufacturers-menu .menu-more-items{
-            padding:2px 10px;  
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        .cat1_wrapper{
-
-        }
-        .cat1_menu{
-            font-size:13px;
-        }
-        .cat1_menu ul:first-child{
-            width: 100%;
-        }
-        .cat2_wrapper{
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            min-height:47px;
-            max-height:47px;
-            margin-top:10px;
-        }
-        .cat2_menu{
-            width:100%;padding:0px;font-size:15px;line-height:12px;
-        }
-        .cat2_menu ul.dropdown-menu {
-            margin-top: -3px;
-        }
-        .cat2_menu li a{
-            padding:12px 25px;
-        }
-    </style>
-  
 </div>
 <?php } ?>
 

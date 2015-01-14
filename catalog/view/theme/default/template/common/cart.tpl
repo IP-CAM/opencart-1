@@ -1,8 +1,8 @@
 <div id="cart" class="btn-group btn-block">
   <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total"><?php echo $text_items; ?></span></button>
-  <ul class="dropdown-menu pull-right">
+  <ul class="dropdown-menu pull-right dropdown-cart">
     <li>
-      <div class="text-center" style="padding:10px;"><a href="<?php echo $cart; ?>" class="btn"><?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>" class="btn"><?php echo $text_checkout; ?></a></div>
+      <div class="text-right" style="padding:10px;"><a href="<?php echo $cart; ?>" class="btn btn-my-secondary"><?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>" class="btn btn-my-primary"><img src="http://img1.wikia.nocookie.net/__cb20130520141819/okami/images/f/f0/Check_mark.png" style="width:15px;margin-right:3px;margin-top:-3px;"/><?php echo $text_checkout; ?></a></div>
     </li>
     <?php if ($products || $vouchers) { ?>
     <li>
@@ -25,7 +25,7 @@
             <?php } ?></td>
           <td class="text-right">x <?php echo $product['quantity']; ?></td>
           <td class="text-right"><?php echo $product['total']; ?></td>
-          <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs" style="padding:3px 6px;">x</i></button></td>
+          <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs" style="padding:3px 5px;">x</button></td>
         </tr>
         <?php } ?>
         <?php foreach ($vouchers as $voucher) { ?>

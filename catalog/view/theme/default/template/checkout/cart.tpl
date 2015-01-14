@@ -1,5 +1,5 @@
 <?php echo $header; ?>
-<div class="container">
+<div class="container"  style="background-image:url('http://www.somagazine.co.uk/wp-content/uploads/2011/11/Shopping-bags1.jpg');background-position:left bottom;background-repeat:no-repeat;">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
