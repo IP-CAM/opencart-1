@@ -11,6 +11,9 @@ $_['text_register_account']        = 'By creating an account you will be able to
 $_['text_returning_customer']      = 'Login';
 $_['text_i_am_returning_customer'] = 'Account ရွိျပီးလွ်င္ email ႏွင့္ password ျဖင့္ login ၀င္ပါ။';
 $_['text_forgotten']               = 'Forgotten Password';
+$_['text_fb_login_info']           = 'Are you on facebook?';
+$_['text_fb_login_permission']     = 'We will never post on your behalf or share any information without your permission.';
+$_['text_fb_button']               = 'Login with Facebook';
 
 // Entry
 $_['entry_email']                  = 'E-Mail';

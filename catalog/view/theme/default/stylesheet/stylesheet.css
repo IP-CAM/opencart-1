@@ -883,6 +883,17 @@ footer a:hover{color:#444444;}
 
 }
 
+.fb__login__wrapper {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding: 20px 5px 5px 5px;
+    margin-top: 20px;
+}
+.fb__login-info {
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
 
 
 
