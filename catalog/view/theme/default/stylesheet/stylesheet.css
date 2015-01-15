@@ -734,7 +734,8 @@ h2.price {
 
 #top{
 	height:50px;
-	background-color: #EE4054;
+	background-color:#EE4054;
+	background-color:#D2527F;
 	margin:0px;
 	padding: 0px;
 }
@@ -785,7 +786,7 @@ h2.price {
 }
 
 .btn-my-primary{
-	background-color: #EE4054;
+	background-color: #D2527F;
 	color:#ffffff;
 }
 .btn-my-secondary{
@@ -829,13 +830,27 @@ h2.price {
 #search button{
 	width:10px;
 }
+.list-group{
 
+}
+.list-group a{
+	border:none;
+	
+}
+.list-group a:hover{
+	background: none;
+	border:none;
+}
 
-body{
-	//background-color: #E9E9E9;
+#content{
+	/*background-color: #e9e9e9;*/
 }
 body a{
 	color: #EE4054;
+	color: #D2527F;
+}
+body{
+	//background-color: #e9e9e9;
 }
 footer{
 	border-top:2px #e3e3e3 solid;
@@ -844,6 +859,7 @@ footer{
 }
 footer h5{color:#444444;}
 footer a{color:#818181;}
+footer a:hover{color:#444444;}
 .product-thumb{
 	background-color:#ffffff;
 	box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.22);
@@ -856,7 +872,7 @@ footer a{color:#818181;}
 	//color:#ffffff;
 }
 .product-thumb .image{
-	padding:20px 0px;
+	padding:0px 0px;
 }
 #top-section{
 	background-color:#ffffff;

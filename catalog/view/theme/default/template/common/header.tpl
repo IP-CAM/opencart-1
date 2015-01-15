@@ -74,7 +74,9 @@
             <li class="dropdown lvl1 dropdown-toggle"><a href="#" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Help ?</a>
               <ul class="dropdown-menu dropdown-menu-left">
                 <li class="lvl2"><a href="#">FAQ</a></li>
-                <li class="lvl2"><a href="#">Dilivery & Payment</li>
+                <li class="lvl2"><a href="#">Dilivery & Payment</a></li>
+                <li class="divider"></li>
+                <li style="text-align:center;"><i class="fa fa-phone"></i> <span> Ph:<?php echo $telephone; ?></span></li>
               </ul>
             </li>
             <?php if (!$logged) : ?>

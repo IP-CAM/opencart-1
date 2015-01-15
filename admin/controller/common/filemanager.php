@@ -50,7 +50,9 @@ class ControllerCommonFileManager extends Controller {
 		$images = array_splice($images, ($page - 1) * 16, 16);
 
 		foreach ($images as $image) {
-			$name = str_split(basename($image), 14);
+			//$name = str_split(basename($image), 14);
+			$initial = str_split(basename($image), 25);
+			$name = sizeof($initial)>1 ? array($initial[0].'...'.pathinfo($image, PATHINFO_EXTENSION)) : array($initial[0]);
 
 			if (is_dir($image)) {
 				$url = '';
