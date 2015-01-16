@@ -15,11 +15,10 @@ class ControllerAccountConnect extends Controller {
         }
 
         $this->load->model('account/connect');
-        $config = $this->model_account_connect->getFacebookConfig();
-        $hybridAuth = new Hybrid_Auth($config);
-        $adapter = $hybridAuth->authenticate( $provider);
-
         try {
+            $config = $this->model_account_connect->getFacebookConfig();
+            $hybridAuth = new Hybrid_Auth($config);
+            $adapter = $hybridAuth->authenticate( $provider);
             $adapter = $hybridAuth->getAdapter($provider);
             $userProfile = $adapter->getUserProfile();
             if (!empty($userProfile)) {
@@ -45,7 +44,7 @@ class ControllerAccountConnect extends Controller {
 
                     $activity_data = array(
                         'customer_id' => $this->customer->getId(),
-                        'name'        => $this->request->post['firstname'] . ' ' . $this->request->post['lastname']
+                        'name'        => $userProfile->firstName . ' ' . $userProfile->lastName
                     );
 
                     $this->model_account_activity->addActivity('register', $activity_data);
@@ -59,7 +58,7 @@ class ControllerAccountConnect extends Controller {
 
                     $activity_data = array(
                         'customer_id' => $this->customer->getId(),
-                        'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
+                        'name'        => $userProfile->firstName . ' ' . $userProfile->lastName
                     );
 
                     $this->model_account_activity->addActivity('login', $activity_data);
@@ -75,11 +74,11 @@ class ControllerAccountConnect extends Controller {
             }
         }
         catch( Exception $e ){
+
             // User not connected?
             if( $e->getCode() == 6 || $e->getCode() == 7 ){
                 // log the user out (erase his session locally)
                 $adapter->logout();
-
                 // try to authenticate again
                 $adapter = $hybridAuth->authenticate( $provider );
                 $this->response->redirect($this->url->link('common/home', '', 'SSL'));
