@@ -69,5 +69,4 @@
     <?php echo $column_right; ?></div>
 </div>
 <?php echo $footer; ?>
-<div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
+
