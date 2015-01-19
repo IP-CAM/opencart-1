@@ -47,10 +47,26 @@
             <h2><?php echo $text_new_customer; ?></h2>
             <p><?php echo $text_register; ?></p>
             <p><?php echo $why_should_you_register; ?></p>
-            <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+            <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a>
+
+            <?php if($fb_app_status): ?>
+                <div class="fb__login__wrapper">
+                    <div class="fb__login-info">
+                        <?php echo $text_fb_login_info; ?>
+                    </div>
+                    <a href="index.php?route=account/connect">
+                        <img src="/catalog/view/theme/default/image/icons/fb-login-btn.png"  title="<?php echo $text_fb_button; ?>" />
+                    </a>
+                    <div class="fb__login-permisson">
+                        <?php echo $text_fb_login_permission; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
         </div>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
 <?php echo $footer; ?>
+

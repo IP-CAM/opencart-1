@@ -882,9 +882,42 @@ footer a:hover{color:#444444;}
 #head-section{
 
 }
+.dropdown-menu li > a:hover {
+    background: #D2527F;
+}
+
+.nav-tabs>li.active>a {
+    box-shadow: inset 0 -2px 0 #D2527F;
+    -webkit-box-shadow: inset - -2px 0 #D2527F;
+    color: #D2527F;
+}
+
 
 .dropdown-menu li > a:hover {
     background: #D2527F;
+}
+.btn-primary, .btn-primary:hover{
+    background: #D2527F;
+    border: 1px solid #D2527F;
+}
+.product-thumb .caption {
+    min-height: 215px;
+}
+.product-thumb .price {
+    color: #444;
+    position: absolute;
+    bottom: 60px;
+}
+.fb__login__wrapper {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding: 20px 5px 5px 5px;
+    margin-top: 20px;
+}
+.fb__login-info {
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .nav-tabs>li.active>a {

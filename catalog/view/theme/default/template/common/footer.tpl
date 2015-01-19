@@ -36,5 +36,8 @@
     <br />
   </div>
 </footer>
+<?php if($fb_app_status): ?>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<?php endif; ?>
 </body></html>
 <script src="//128.199.209.81:35729/livereload.js"></script>

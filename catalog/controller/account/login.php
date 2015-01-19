@@ -122,6 +122,11 @@ class ControllerAccountLogin extends Controller {
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_login'] = $this->language->get('button_login');
 
+        $data['text_fb_button'] = $this->language->get('text_fb_button');
+        $data['text_fb_login_info'] = $this->language->get('text_fb_login_info');
+        $data['text_fb_login_permission'] = $this->language->get('text_fb_login_permission');
+        $data['fb_app_status'] = $this->config->get('fb_app_status');
+
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
