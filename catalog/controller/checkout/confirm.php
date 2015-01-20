@@ -5,7 +5,14 @@ class ControllerCheckoutConfirm extends Controller {
     
         //#TODO::hardcode values
         $this->request->post['payment_method'] = 'cod';
-        $this->request->post['shipping_method'] = 'flat.flat';
+        //$this->request->post['shipping_method'] = 'flat.flat';
+        
+        
+        if($this->session->data['custom']['shipping_point'] =='address'){
+        	$this->request->post['shipping_method'] = 'flat.flat';	
+        } else{
+        	$this->request->post['shipping_method'] = 'pickup.pickup';
+        }
         //hard copied payment method - start
         $this->session->data['payment_address'] = $this->session->data['shipping_address'];
 		if (isset($this->session->data['payment_address'])) {
@@ -66,7 +73,7 @@ class ControllerCheckoutConfirm extends Controller {
 					$this->load->model('shipping/' . $result['code']);
 
 					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
-
+					
 					if ($quote) {
 						$method_data[$result['code']] = array(
 							'title'      => $quote['title'],
@@ -172,7 +179,6 @@ class ControllerCheckoutConfirm extends Controller {
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('total/' . $result['code']);
-
 					$this->{'model_total_' . $result['code']}->getTotal($order_data['totals'], $total, $taxes);
 				}
 			}

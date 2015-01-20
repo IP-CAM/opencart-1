@@ -21,7 +21,7 @@ class ModelShippingPickup extends Model {
 			$quote_data['pickup'] = array(
 				'code'         => 'pickup.pickup',
 				'title'        => $this->language->get('text_description'),
-				'cost'         => 0.00,
+				'cost'         => $this->config->get('pickup_cost'),
 				'tax_class_id' => 0,
 				'text'         => $this->currency->format(0.00)
 			);

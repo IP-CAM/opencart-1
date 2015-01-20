@@ -91,6 +91,8 @@ class ControllerCheckoutShippingAddress extends Controller {
 	    $this->request->post['country_id'] = '146';
 	    $this->request->post['zone_id'] = $this->request->post['zone_id'] ? $this->request->post['zone_id'] : '';
 	    
+	    $this->session->data['custom'] = isset($this->session->data['custom']) ? $this->session->data['custom'] : array();
+
 	    $json = array();
 	  	$this->load->language('checkout/checkout');
 		
@@ -102,7 +104,6 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$json['error']['picker_telephone'] = $this->language->get('error_picker_telephone');
 			}
 			if (!$json) {
-				$this->session->data['custom'] = isset($this->session->data['custom']) ? $this->session->data['custom'] : array();
 		    $this->session->data['custom']['picker_name'] = $this->request->post['picker_name'];
 		    $this->session->data['custom']['picker_telephone'] = $this->request->post['picker_telephone'];
 			  $this->session->data['custom']['order_specific_comment'] = $this->request->post['order_specific_comment'];	
@@ -156,6 +157,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 				}
 
 				if (!$json) {
+					$this->session->data['custom']['shipping_point'] = 'address';
 					// Default Shipping Address
 					$this->load->model('account/address');
 
@@ -178,6 +180,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 				}
                 
 				if (!$json) {
+					$this->session->data['custom']['shipping_point'] = 'outlet_pickup';
 					// Default Shipping Address
 					//$this->load->model('account/address');
 
@@ -250,6 +253,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 				}
 
 				if (!$json) {
+					$this->session->data['custom']['shipping_point'] = 'address';
 					// Default Shipping Address
 					$this->load->model('account/address');
 

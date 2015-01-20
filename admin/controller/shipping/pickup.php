@@ -28,6 +28,7 @@ class ControllerShippingPickup extends Controller {
 		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$data['entry_outlet_pickup_cost'] = $this->language->get('entry_outlet_pickup_cost');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -73,6 +74,12 @@ class ControllerShippingPickup extends Controller {
 			$data['pickup_status'] = $this->request->post['pickup_status'];
 		} else {
 			$data['pickup_status'] = $this->config->get('pickup_status');
+		}
+
+		if (isset($this->request->post['pickup_cost'])) {
+			$data['pickup_cost'] = $this->request->post['pickup_cost'];
+		} else {
+			$data['pickup_cost'] = $this->config->get('pickup_cost');
 		}
 
 		if (isset($this->request->post['pickup_sort_order'])) {
