@@ -7,6 +7,8 @@ class ControllerAccountAccount extends Controller {
 			$this->response->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 
+		$data['customer'] = $this->customer;
+		
 		$this->load->language('account/account');
 
 		$this->document->setTitle($this->language->get('heading_title'));
