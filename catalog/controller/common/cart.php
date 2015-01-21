@@ -126,6 +126,9 @@ class ControllerCommonCart extends Controller {
 		$data['totals'] = array();
 
 		foreach ($total_data as $result) {
+		    if($result['code'] === 'total'){
+		        continue;
+		    }
 			$data['totals'][] = array(
 				'title' => $result['title'],
 				'text'  => $this->currency->format($result['value']),

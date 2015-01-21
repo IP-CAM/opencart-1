@@ -23,7 +23,7 @@
             <br />
             - <small><?php echo $text_recurring; ?> <?php echo $product['recurring']; ?></small>
             <?php } ?></td>
-          <td class="text-right">x <?php echo $product['quantity']; ?></td>
+          <td class="text-right">x<?php echo $product['quantity']; ?></td>
           <td class="text-right"><?php echo $product['total']; ?></td>
           <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs" style="padding:3px 5px;">x</button></td>
         </tr>
