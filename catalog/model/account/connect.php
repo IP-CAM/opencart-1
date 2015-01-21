@@ -17,6 +17,7 @@ class ModelAccountConnect extends Model {
                         "trustForwarded" => false
                     ),
                 ),
+                "scope"   => "email, user_birthday",
                 "debug_mode" => false,
                 "debug_file" => "",
             );

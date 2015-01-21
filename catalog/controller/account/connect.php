@@ -32,24 +32,28 @@ class ControllerAccountConnect extends Controller {
                     $data['telephone'] = $userProfile->phone;
                     $data['password'] = $userProfile->identifier;
                     $data['confirm'] = $userProfile->identifier;
+                    if(!empty($userProfile->email)) {
+                        $this->model_account_customer->addCustomer($data);
 
-                    $this->model_account_customer->addCustomer($data);
+                        $this->customer->login($userProfile->email, $userProfile->identifier);
 
-                    $this->customer->login($userProfile->email, $userProfile->identifier);
+                        unset($this->session->data['guest']);
 
-                    unset($this->session->data['guest']);
+                        // Add to activity log
+                        $this->load->model('account/activity');
 
-                    // Add to activity log
-                    $this->load->model('account/activity');
+                        $activity_data = array(
+                            'customer_id' => $this->customer->getId(),
+                            'name' => $userProfile->firstName . ' ' . $userProfile->lastName
+                        );
 
-                    $activity_data = array(
-                        'customer_id' => $this->customer->getId(),
-                        'name'        => $userProfile->firstName . ' ' . $userProfile->lastName
-                    );
+                        $this->model_account_activity->addActivity('register', $activity_data);
 
-                    $this->model_account_activity->addActivity('register', $activity_data);
-
-                    $this->response->redirect($this->url->link('account/success'));
+                        $this->response->redirect($this->url->link('account/success'));
+                    } else {
+                        #TODO to put the error message
+                        $this->response->redirect($this->url->link('common/home', '', 'SSL'));
+                    }
                 } else {
                     unset($this->session->data['guest']);
 
