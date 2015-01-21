@@ -14,10 +14,10 @@ class ModelAccountConnect extends Model {
                     "Facebook" => array (
                         "enabled" => true,
                         "keys"    => array ( "id" => $fbAppId, "secret" => $fbAppSecret ),
-                        "trustForwarded" => false
+                        "trustForwarded" => false,
+                        "scope"   => "email",
                     ),
                 ),
-                "scope"   => "email, user_birthday",
                 "debug_mode" => false,
                 "debug_file" => "",
             );
