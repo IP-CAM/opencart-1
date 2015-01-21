@@ -50,6 +50,7 @@ class ControllerCommonFileManager extends Controller {
 		$images = array_splice($images, ($page - 1) * 16, 16);
 
 		foreach ($images as $image) {
+			//#ocbug :: adding space every 14 characters in file manager. oc purposed it for new line. but confusion for user. better with dot dot dot followed by file extension
 			//$name = str_split(basename($image), 14);
 			$initial = str_split(basename($image), 25);
 			$name = sizeof($initial)>1 ? array($initial[0].'...'.pathinfo($image, PATHINFO_EXTENSION)) : array($initial[0]);
