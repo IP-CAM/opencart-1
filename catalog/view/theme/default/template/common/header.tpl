@@ -72,7 +72,7 @@
           <div class="nav pull-right top-menu">
             <ul class="list-inline">
             <li class="dropdown lvl1 dropdown-toggle"><a href="#" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Help ?</a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu dropdown-menu-left" style="margin-left:-50px;">
                 <li class="lvl2"><a href="#">FAQ</a></li>
                 <li class="lvl2"><a href="#">Dilivery & Payment</a></li>
                 <li class="divider"></li>

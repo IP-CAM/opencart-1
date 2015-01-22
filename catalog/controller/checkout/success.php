@@ -1,6 +1,9 @@
 <?php
 class ControllerCheckoutSuccess extends Controller {
 	public function index() {
+		$this->load->model('module/descriptions');
+		$data['text_message'] = $this->model_module_descriptions->getDescriptionByKey('checkout_success_message');
+
 		$this->load->language('checkout/success');
 
 		if (isset($this->session->data['order_id'])) {
@@ -65,13 +68,13 @@ class ControllerCheckoutSuccess extends Controller {
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		/*
 		if ($this->customer->isLogged()) {
 			$data['text_message'] = sprintf($this->language->get('text_customer'), $this->url->link('account/account', '', 'SSL'), $this->url->link('account/order', '', 'SSL'), $this->url->link('account/download', '', 'SSL'), $this->url->link('information/contact'));
 		} else {
 			$data['text_message'] = sprintf($this->language->get('text_guest'), $this->url->link('information/contact'));
 		}
-
+		*/
 		$data['button_continue'] = $this->language->get('button_continue');
 
 		$data['continue'] = $this->url->link('common/home');
